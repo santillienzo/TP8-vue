@@ -3,9 +3,17 @@ const costoEnvio = 0;
 
 export default {
     name: "InstrumentoEnLista",
-    data: ()=>({
-        costoEnvio: '0'
-    })
+    props: {
+        id: Number,
+        name: String,
+        marca: String,
+        modelo: String,
+        imagen: String,
+        precio: String,
+        costoEnvio: String,
+        cantidadVendida: Number,
+        descripcion: String
+    }
 }
 </script>
 
@@ -14,14 +22,14 @@ export default {
 <template>
         <div class='productContainer'>
             <div class='productImageContainer'>
-                <img src='https://i.pinimg.com/originals/c9/64/5f/c9645fa432dd95836ee912a3af9156b6.png' alt="" />
+                <img :src='imagen' alt="" />
             </div>
             <div class='productInfoContainer'>
-                <a to='' class='productTitle'>Instrumento de percusión</a>
-                <p class='productPrice'>$ 25000</p>
-                <span class='productShipping free' v-if="costoEnvio === '0'"><img src={camion} alt="" /> Envío gratis a todo el país</span>
+                <router-link :to='"productos/" + id' class='productTitle'>{{name}}</router-link>
+                <p class='productPrice'>$ {{precio}}</p>
+                <span class='productShipping free' v-if="costoEnvio === '0'"><img src='../assets/camion.png' alt="" /> Envío gratis a todo el país</span>
                 <span class='productShipping non-free' v-else-if="costoEnvio !== '0'">Costo de envío Interior de Argentina: 100</span>
-                <span class='productSoldOut'>25 vendidos</span>
+                <span class='productSoldOut'>{{cantidadVendida}} vendidos</span>
             </div>
         </div>
 </template>

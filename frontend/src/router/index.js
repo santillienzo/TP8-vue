@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import GridView from '../views/GridView.vue'
 import ProductsView from '../views/ProductsView.vue'
+import ProductView from '../views/ProductView.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/productos',
     name: 'productos',
     component: ProductsView
+  },
+  {
+    path: '/productos/:id',
+    name: 'producto',
+    component: ProductView
   },
   {
     path: '/grilla',
